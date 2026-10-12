@@ -7,7 +7,7 @@ import type {AnyRequest} from '@src/types/onyx/Request';
 import type {OnyxKey} from 'react-native-onyx';
 
 import MainQueueStore from './MainQueueStore';
-import {isAuthenticating} from './NetworkStore';
+import {isAuthenticating} from './AuthStore';
 import {isRunning as sequentialQueueIsRunning} from './SequentialQueue';
 
 /**

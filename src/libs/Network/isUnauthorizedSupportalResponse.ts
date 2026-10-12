@@ -3,7 +3,7 @@ import type Response from '@src/types/onyx/Response';
 
 import type {OnyxKey} from 'react-native-onyx';
 
-import {isSupportAuthToken} from './NetworkStore';
+import {isSupportAuthToken} from './AuthStore';
 
 const SUPPORTAL_DENIAL_MESSAGE = 'You are not authorized to take this action when support logged in.';
 
