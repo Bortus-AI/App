@@ -15,7 +15,6 @@ import {generateDefaultWorkspaceName} from '@libs/actions/Policy/Policy';
 import {resolveSuggestedFollowup} from '@libs/actions/Report/SuggestedFollowup';
 import getNonEmptyStringOnyxID from '@libs/getNonEmptyStringOnyxID';
 import Navigation from '@libs/Navigation/Navigation';
-import Permissions from '@libs/Permissions';
 import type {Followup} from '@libs/ReportActionFollowupUtils';
 import {parseFollowupsFromHtml} from '@libs/ReportActionFollowupUtils';
 import {
@@ -246,25 +245,6 @@ function TrackExpenseButtons({action, actionOwnerReportID}: TrackExpenseButtonsP
                     )}
                     <Button onPress={() => submit(CONST.IOU.SUBMIT_DESTINATION.EMPLOYER)}>
                         <Button.Text>{translate('actionableMentionTrackExpense.submitToEmployer')}</Button.Text>
-                    </Button>
-                </>
-            )}
-
-            {Permissions.canUseTrackFlows() && (
-                <>
-                    <Button
-                        onPress={() => {
-                            createDraftTransactionAndNavigateToParticipantSelector({...baseDraftTransactionParams, actionName: CONST.IOU.ACTION.CATEGORIZE});
-                        }}
-                    >
-                        <Button.Text>{translate('actionableMentionTrackExpense.categorize')}</Button.Text>
-                    </Button>
-                    <Button
-                        onPress={() => {
-                            createDraftTransactionAndNavigateToParticipantSelector({...baseDraftTransactionParams, actionName: CONST.IOU.ACTION.SHARE});
-                        }}
-                    >
-                        <Button.Text>{translate('actionableMentionTrackExpense.share')}</Button.Text>
                     </Button>
                 </>
             )}
