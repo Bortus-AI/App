@@ -12,7 +12,6 @@ import usePreferredPolicy from '@hooks/usePreferredPolicy';
 
 import {generateDefaultWorkspaceName} from '@libs/actions/Policy/Policy';
 import getNonEmptyStringOnyxID from '@libs/getNonEmptyStringOnyxID';
-import Permissions from '@libs/Permissions';
 import {getTrackExpenseActionableWhisper} from '@libs/ReportActionsUtils';
 import {getOriginalReportID} from '@libs/ReportUtils';
 import {getOriginalTransactionWithSplitInfo, isPerDiemRequest, isTimeRequest} from '@libs/TransactionUtils';
@@ -39,7 +38,7 @@ function ReportDetailsMenuTrackExpenseItems({reportID, requestData}: ReportDetai
     const {isRestrictedToPreferredPolicy, preferredPolicyID} = usePreferredPolicy();
     const activePolicy = useActivePolicy();
     const lastWorkspaceNumber = useLastWorkspaceNumber();
-    const expensifyIcons = useMemoizedLazyExpensifyIcons(['Send', 'Folder', 'UserPlus']);
+    const expensifyIcons = useMemoizedLazyExpensifyIcons(['Send']);
 
     const [report] = useOnyx(`${ONYXKEYS.COLLECTION.REPORT}${reportID}`);
     const [userBillingGracePeriodEnds] = useOnyx(ONYXKEYS.COLLECTION.SHARED_NVP_PRIVATE_USER_BILLING_GRACE_PERIOD_END);
@@ -141,62 +140,6 @@ function ReportDetailsMenuTrackExpenseItems({reportID, requestData}: ReportDetai
     return (
         <>
             {submitItems}
-            {Permissions.canUseTrackFlows() && (
-                <>
-                    <MenuItem
-                        title={translate('actionableMentionTrackExpense.categorize')}
-                        icon={expensifyIcons.Folder}
-                        onPress={() => {
-                            createDraftTransactionAndNavigateToParticipantSelector({
-                                reportID: actionReportID,
-                                reportActions: actionReportActions,
-                                actionName: CONST.IOU.ACTION.CATEGORIZE,
-                                reportActionID: actionableWhisperReportActionID,
-                                introSelected,
-                                draftTransactionIDs,
-                                activePolicy,
-                                userBillingGracePeriodEnds,
-                                amountOwed,
-                                ownerBillingGracePeriodEnd,
-                                transaction: iouTransaction,
-                                currentUserAccountID,
-                                currentUserEmail: currentUserEmail ?? '',
-                                currentUserLocalCurrency,
-                                filteredPoliciesCount: filteredPoliciesInfo?.filteredPoliciesCount ?? 0,
-                                firstPolicy: filteredPoliciesInfo?.firstPolicy,
-                            });
-                        }}
-                        isAnonymousAction={false}
-                        shouldShowRightIcon
-                    />
-                    <MenuItem
-                        title={translate('actionableMentionTrackExpense.share')}
-                        icon={expensifyIcons.UserPlus}
-                        onPress={() => {
-                            createDraftTransactionAndNavigateToParticipantSelector({
-                                reportID: actionReportID,
-                                reportActions: actionReportActions,
-                                actionName: CONST.IOU.ACTION.SHARE,
-                                reportActionID: actionableWhisperReportActionID,
-                                introSelected,
-                                draftTransactionIDs,
-                                activePolicy,
-                                userBillingGracePeriodEnds,
-                                amountOwed,
-                                ownerBillingGracePeriodEnd,
-                                transaction: iouTransaction,
-                                currentUserAccountID,
-                                currentUserEmail: currentUserEmail ?? '',
-                                currentUserLocalCurrency,
-                                filteredPoliciesCount: filteredPoliciesInfo?.filteredPoliciesCount ?? 0,
-                                firstPolicy: filteredPoliciesInfo?.firstPolicy,
-                            });
-                        }}
-                        isAnonymousAction={false}
-                        shouldShowRightIcon
-                    />
-                </>
-            )}
         </>
     );
 }
