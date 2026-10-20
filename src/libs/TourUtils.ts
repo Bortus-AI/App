@@ -28,5 +28,4 @@ function getTestDriveURL(shouldUseNarrowLayout: boolean, introSelected: OnyxEntr
     return shouldUseNarrowLayout ? CONST.STORYLANE.EMPLOYEE_TOUR_MOBILE : CONST.STORYLANE.EMPLOYEE_TOUR;
 }
 
-// eslint-disable-next-line import/prefer-default-export
-export {getTestDriveURL};
+export default getTestDriveURL;
