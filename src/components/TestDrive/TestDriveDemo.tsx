@@ -20,7 +20,7 @@ import Log from '@libs/Log';
 import Navigation from '@libs/Navigation/Navigation';
 import TransitionTracker from '@libs/Navigation/TransitionTracker';
 import {isAdminRoom} from '@libs/ReportUtils';
-import {getTestDriveURL} from '@libs/TourUtils';
+import getTestDriveURL from '@libs/TourUtils';
 
 import CONST from '@src/CONST';
 import ONYXKEYS from '@src/ONYXKEYS';
