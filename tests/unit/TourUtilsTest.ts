@@ -1,4 +1,4 @@
-import {getTestDriveURL} from '@libs/TourUtils';
+import getTestDriveURL from '@libs/TourUtils';
 
 import CONST from '@src/CONST';
 
