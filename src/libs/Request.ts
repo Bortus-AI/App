@@ -11,7 +11,7 @@ import isStartupNetworkRequest from './AppStartupNetworkRequest';
 import HttpUtils from './HttpUtils';
 import Log from './Log';
 import enhanceParameters from './Network/enhanceParameters';
-import {hasReadRequiredDataFromStorage} from './Network/NetworkStore';
+import {hasReadRequiredDataFromStorage} from './Network/AuthStore';
 import {cancelSpan, endSpanWithAttributes} from './telemetry/activeSpans';
 import getRequestPhaseSpanNames, {getNextRequestPhaseAttempt} from './telemetry/measuredRequestPhaseCommands';
 import startRequestPhaseSpan, {getRequestPhaseSpanId} from './telemetry/startRequestPhaseSpan';
