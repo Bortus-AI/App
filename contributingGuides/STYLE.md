@@ -63,7 +63,6 @@
 
 ## Introduction
 
-<!-- Consider removing this as we moved to TS -->
 
 For almost all of our code style rules, refer to the [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript).
 
