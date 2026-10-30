@@ -19,13 +19,11 @@ const shallowCompare = (obj1?: Record<string, unknown>, obj2?: Record<string, un
 };
 
 function filterObject<TObject extends Record<string, unknown>>(obj: TObject, predicate: (key: keyof TObject, value: ValueOf<TObject>) => boolean): TObject {
-    return Object.keys(obj)
+    const filteredEntries = Object.keys(obj)
         .filter((key: keyof TObject) => predicate(key, obj[key]))
-        .reduce<TObject>((result, key: keyof TObject) => {
-            // eslint-disable-next-line no-param-reassign
-            result[key] = obj[key];
-            return result;
-        }, {} as TObject);
+        .map((key: keyof TObject) => [key, obj[key]]);
+
+    return Object.fromEntries(filteredEntries) as TObject;
 }
 
 function getObjectKeys<T extends Record<string, unknown>>(obj: T): Array<keyof T> {
