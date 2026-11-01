@@ -72,13 +72,6 @@ class BankAccount {
     }
 
     /**
-     * @deprecated Use !isPending instead.
-     */
-    isVerified() {
-        return !this.isPending();
-    }
-
-    /**
      * If the user still needs to enter the 3 micro deposit amounts.
      */
     isPending() {
